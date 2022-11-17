@@ -11,6 +11,7 @@ export const Numbers = () => {
     <React.Fragment>
       {counts.map((count, index) => (
         <Text
+        key={count}
           css={styles.point}
           sx={{
             transform: `translate(-50%,-100%) rotate(${18 * index - 1}deg)`,
