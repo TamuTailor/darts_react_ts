@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { SerializedStyles } from "@emotion/react";
 import React, { useContext} from "react";
-import { gameoption, setStateContext } from "../../templates/Bord/Fat";
+import {  setStateContext } from "../../templates/Bord/Fat";
 
 type Props = {
   styles: SerializedStyles;
@@ -11,7 +11,6 @@ type Props = {
 
 export const DefaultSegment = (props: Props) => {
   const { styles, magnification } = props;
- const option = useContext(gameoption)
  const {setNumber} = useContext(setStateContext)
  const {setMagnification} = useContext(setStateContext)
  const {setthrowCount} = useContext(setStateContext)
