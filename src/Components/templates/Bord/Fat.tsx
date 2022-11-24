@@ -1,5 +1,6 @@
 import React, { createContext, Dispatch, SetStateAction, useEffect, useState } from "react";
 import { ChangeButton } from "../../Atoms/Button/ChangeButton";
+import { Change } from "../../molecules/Change";
 import { SegmentCircle } from "../../organisms/SegmentCircle";
 
 type setTypeObject = {
@@ -20,12 +21,12 @@ export const Fat = () => {
   const [roundSum, setRoundSum] = useState<number>(0);
 
   useEffect(()=>{
-    // alert(number*magnification)
     let point:number = number*magnification
     let sum:number = 0
 
     if(throwCount <= 4){
         sum = roundSum + point
+        setRoundSum(sum)
         setRoundSum(sum)
     }
   },[throwCount])
@@ -38,12 +39,9 @@ export const Fat = () => {
         <setStateContext.Provider value={{setNumber,setMagnification,setthrowCount,throwCount,setRoundSum}}>
           <SegmentCircle  />
           {
-            throwCount > 3 ? <div>
-            <p>round{throwCount-1}</p>
-          </div>:<></>
+            throwCount >=3  ? 
+             <Change />:<></>
           }
-          <ChangeButton />
-
         </setStateContext.Provider>
       {/* <ファットの表コンポーネント> */}
     </React.Fragment>

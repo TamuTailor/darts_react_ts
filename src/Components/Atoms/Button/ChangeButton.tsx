@@ -1,9 +1,15 @@
 import { Button } from '@chakra-ui/react'
+import { SerializedStyles } from '@emotion/react'
 import { useContext } from 'react'
 import { setStateContext } from '../../templates/Bord/Fat'
 
+type Props = {
+  style:SerializedStyles
+}
 
-export const ChangeButton = () => {
+
+export const ChangeButton = (props:Props) => {
+  const { style } = props
   const {setthrowCount} = useContext(setStateContext)
   const {setRoundSum} = useContext(setStateContext)
   const {setNumber} = useContext(setStateContext)
@@ -17,6 +23,6 @@ export const ChangeButton = () => {
   }
 
   return (
-    <Button onClick={()=>Change()}>Change</Button>
+    <Button css={style} onClick={()=>Change()}></Button>
   )
 }
