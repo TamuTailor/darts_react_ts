@@ -7,7 +7,7 @@ export const Double = () => {
 
   return (
     <React.Fragment>
-      <DefaultSegment magnification={2} styles={styles.double} />
+      <DefaultSegment m={2} styles={styles.double} />
     </React.Fragment>
   );
 };

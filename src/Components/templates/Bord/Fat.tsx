@@ -1,7 +1,13 @@
+import { Box, Button } from "@chakra-ui/react";
+import { css } from "@emotion/react";
+import { useAtom, useAtomValue } from "jotai";
 import React, { createContext, Dispatch, SetStateAction, useEffect, useState } from "react";
-import { ChangeButton } from "../../Atoms/Button/ChangeButton";
+import { number,magnification, throwCount,roundSum} from "../../../Atom";
 import { Change } from "../../molecules/Change";
+import { GameTable } from "../../molecules/GameTable";
 import { SegmentCircle } from "../../organisms/SegmentCircle";
+
+
 
 type setTypeObject = {
     setNumber: Dispatch<SetStateAction<number>>;
@@ -10,40 +16,57 @@ type setTypeObject = {
     throwCount:number
     setRoundSum: Dispatch<SetStateAction<number>>;
   };
-
 export const gameoption = createContext("");
 export const setStateContext = createContext({} as setTypeObject);
 
+
+
 export const Fat = () => {
-  const [number, setNumber] = useState<number>(0);
-  const [magnification, setMagnification] = useState<number>(0);
-  const [throwCount, setthrowCount] = useState<number>(1);
-  const [roundSum, setRoundSum] = useState<number>(0);
+
+  const n = useAtomValue(number)
+  const m = useAtomValue(magnification)
+  const t = useAtomValue(throwCount)
+  const [rSum,setRSum] = useAtom(roundSum)
 
   useEffect(()=>{
-    let point:number = number*magnification
+    let point:number = n*m
     let sum:number = 0
 
-    if(throwCount <= 4){
-        sum = roundSum + point
-        setRoundSum(sum)
-        setRoundSum(sum)
-    }
-  },[throwCount])
+        sum = rSum + point
+        setRSum(sum)
+        setRSum(sum)
+    
+  },[t])
 
+ 
   return (
     <React.Fragment>  
-        <p>ラウンド得点{number*magnification}</p>
-        <p>round{throwCount}</p>
-        <p>合計{roundSum}</p>
-        <setStateContext.Provider value={{setNumber,setMagnification,setthrowCount,throwCount,setRoundSum}}>
-          <SegmentCircle  />
+        {/* <p>ラウンド得点{number*magnification}</p> */}
+         <p>ラウンド得点{n*m}</p> 
+
+        <p>round{t}</p>
+        <p>合計{rSum}</p>
+        
+     
+          <Box css={styles.table}>
+             <SegmentCircle  />
+             {/* <GameTable /> */}
+            
+          </Box>
           {
-            throwCount >=3  ? 
+            t >=3  ? 
              <Change />:<></>
           }
-        </setStateContext.Provider>
-      {/* <ファットの表コンポーネント> */}
+ 
     </React.Fragment>
   );
 };
+
+const styles = {
+  table:css`
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: red;
+  `
+}

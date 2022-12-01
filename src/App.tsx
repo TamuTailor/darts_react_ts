@@ -1,11 +1,14 @@
 import './App.css';
 import {Router} from "./Router/Router"
 import { ChakraProvider } from '@chakra-ui/react'
+import { Provider } from 'jotai'
 
 function App() {
   return (
     <ChakraProvider>
-      <Router />
+      <Provider>
+        <Router />
+      </Provider>
     </ChakraProvider>
   );
 }

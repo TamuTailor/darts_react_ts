@@ -7,7 +7,7 @@ export const Triple = () => {
 
   return (
     <React.Fragment>
-      <DefaultSegment magnification={3} styles={styles.triple} />
+      <DefaultSegment m={3} styles={styles.triple} />
     </React.Fragment>
   );
 };

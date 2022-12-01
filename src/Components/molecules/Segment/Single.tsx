@@ -9,13 +9,12 @@ type Props = {
 export const Single = (props: Props) => {
   const { position } = props;
 
-
   return (
     <React.Fragment>
       {position === "inner" ? (
-        <DefaultSegment magnification={1}  styles={styles.inner} />
+        <DefaultSegment m={1}  styles={styles.inner} />
       ) : (
-        <DefaultSegment magnification={1} styles={styles.outer} />
+        <DefaultSegment m={1} styles={styles.outer} />
       )}
     </React.Fragment>
   );

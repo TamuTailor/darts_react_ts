@@ -1,28 +1,25 @@
-import { Button } from '@chakra-ui/react'
-import { SerializedStyles } from '@emotion/react'
-import { useContext } from 'react'
-import { setStateContext } from '../../templates/Bord/Fat'
+import { Button } from "@chakra-ui/react";
+import { SerializedStyles } from "@emotion/react";
+import { useSetAtom } from "jotai";
+
+import { magnification, number, roundSum, throwCount } from "../../../Atom";
 
 type Props = {
-  style:SerializedStyles
-}
+  style: SerializedStyles;
+};
 
+export const ChangeButton = (props: Props) => {
+  const { style } = props;
 
-export const ChangeButton = (props:Props) => {
-  const { style } = props
-  const {setthrowCount} = useContext(setStateContext)
-  const {setRoundSum} = useContext(setStateContext)
-  const {setNumber} = useContext(setStateContext)
- 
+  const setNum = useSetAtom(number);
+  const setthrow = useSetAtom(throwCount);
+  const setRSum = useSetAtom(roundSum);
 
-  const Change = ()=>{
-    setthrowCount(0)
-    setRoundSum(0)
-    setNumber(0)
-    
-  }
+  const Change = () => {
+    setNum(0);
+    setthrow(0);
+    setRSum(0);
+  };
 
-  return (
-    <Button css={style} onClick={()=>Change()}></Button>
-  )
-}
+  return <Button css={style} onClick={() => Change()}></Button>;
+};
