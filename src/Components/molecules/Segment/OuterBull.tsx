@@ -1,22 +1,19 @@
 import { Box } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useContext } from "react";
-import { setStateContext } from "../../templates/Bord/Fat";
+
 
 export const OuterBull = () => {
-  const { setNumber } = useContext(setStateContext);
-  const { setMagnification } = useContext(setStateContext);
-  const { setthrowCount } = useContext(setStateContext);
-  const { throwCount } = useContext(setStateContext);
+
 
   const hitNumber = (count: number) => {
-    if(true){
-      setMagnification(1);
-    }else{
-      setMagnification(1);
-    }
-    setNumber(count);
-    setthrowCount(throwCount + 1);
+  //   if(true){
+  //     setMagnification(1);
+  //   }else{
+  //     setMagnification(1);
+  //   }
+  //   setNumber(count);
+  //   setthrowCount(throwCount + 1);
     
     
   };

@@ -1,20 +1,17 @@
 import { Box } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useContext } from "react";
-import { setStateContext } from "../../templates/Bord/Fat";
+
 
 
 
 export const InnerBull = () => {
-  const {setNumber} = useContext(setStateContext)
-  const {setMagnification} = useContext(setStateContext)
-  const {setthrowCount} = useContext(setStateContext)
-  const {throwCount} = useContext(setStateContext)
+
 
   const hitNumber = (count:number) => {
-  setNumber(count)
-  setMagnification(2)
-  setthrowCount(throwCount+1)
+  // setNumber(count)
+  // setMagnification(2)
+  // setthrowCount(throwCount+1)
 
 }
   return <Box onClick={()=>hitNumber(25)} css={styles.inner} />;
