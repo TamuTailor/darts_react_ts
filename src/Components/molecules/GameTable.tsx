@@ -11,9 +11,9 @@ import {
 } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useAtom } from "jotai";
-import React from "react";
 import { gameArray } from "../../Atom";
 import { ThrowPoint } from "../Atoms/ThrowPoint";
+import { Score } from "./Score";
 
 export const GameTable = () => {
   const [gArray, setGArray] = useAtom(gameArray);
@@ -36,7 +36,8 @@ export const GameTable = () => {
             </Tr>
           </Tbody>
         </Table>
-      </TableContainer>
+      </TableContainer> 
+      <Score />
     </Box>
   );
 };

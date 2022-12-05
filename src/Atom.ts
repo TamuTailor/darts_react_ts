@@ -9,3 +9,8 @@ export const round = atom(1)
 export const roundArray = atom<number[]>([])
 export const gameArray= atom<number[][]>([])
 
+
+
+export const game = atom<string | number>("")
+export const gameScore = atom<number>(0)
+

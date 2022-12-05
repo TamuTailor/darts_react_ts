@@ -8,9 +8,7 @@ export const Home = () => {
     <>
     <Header />
     <Linkbar />
-    <Fat />
 
- 
     </>
   );
 };

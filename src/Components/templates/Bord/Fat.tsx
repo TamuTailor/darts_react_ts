@@ -9,10 +9,10 @@ import {
   roundSum,
   round,
   roundArray,
+  gameScore,
 } from "../../../Atom";
 import { Change } from "../../molecules/Change";
 import { GameTable } from "../../molecules/GameTable";
-import { ThrowPoint } from "../../Atoms/ThrowPoint";
 import { SegmentCircle } from "../../organisms/SegmentCircle";
 
 export const Fat = () => {
@@ -23,6 +23,7 @@ export const Fat = () => {
   const [rSum, setRSum] = useAtom(roundSum);
   const [rArray, setRArray] = useAtom(roundArray);
   const isFirstRender = useRef(false);
+  const [score, setScore] = useAtom(gameScore);
 
   let tmp: number[] = rArray;
   let point: number = n * m;
@@ -39,10 +40,17 @@ export const Fat = () => {
       sum = rSum + point;
       setRSum(sum);
       tmp.push(point);
-      setRArray(tmp);
+      // setRArray(tmp);
       console.log(rArray);
+      ZerooneLogic(point)
     }
   }, [t]);
+
+  const ZerooneLogic = (p:number ) => {
+    setScore(score - p)
+    setRArray(tmp);
+
+  };
 
   return (
     <React.Fragment>
@@ -53,9 +61,9 @@ export const Fat = () => {
 
       <Box css={styles.table}>
         <SegmentCircle />
-        <GameTable /> 
+        <GameTable />
       </Box>
-      {t >= 3 ? <Change /> : <></>}
+      {t >= 3 ||score < 0 ? <Change /> : <></>}
     </React.Fragment>
   );
 };
@@ -66,6 +74,6 @@ const styles = {
     justify-content: space-between;
     align-items: center;
     background-color: red;
-    height:50vw;
+    height: 50vw;
   `,
 };

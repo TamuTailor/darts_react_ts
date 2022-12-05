@@ -1,13 +1,17 @@
-import { Box, StylesProvider } from '@chakra-ui/react'
+import { Box } from '@chakra-ui/react'
 import { css } from '@emotion/react'
+import { GameSelectButton } from '../Atoms/Button/GameSelectButton'
 import { Linkbar } from '../molecules/Linkbar'
 import { Fat } from '../templates/Bord/Fat'
 
 export const Zeroone = () => {
+
+
   return (
     <Box css={styles.back}>
         <Linkbar />
-        <Fat />
+        <Fat /> 
+        <GameSelectButton />
     </Box>
   )
 }
