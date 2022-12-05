@@ -15,8 +15,7 @@ export const OuterBull = () => {
   //   setNumber(count);
   //   setthrowCount(throwCount + 1);
     
-    
-  };
+    };
 
   return <Box onClick={() => hitNumber(25)} css={styles.outer} />;
 };
