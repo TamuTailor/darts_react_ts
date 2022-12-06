@@ -4,12 +4,13 @@ import { css } from '@emotion/react'
 import { ChangeButton } from '../Atoms/Button/ChangeButton'
 
 export const Change = () => {
+  
   return (
     <Box css={styles.box}>
         <Box css={styles.box_inner}>
             <Text css={styles.text}>PLAYER CHANGE</Text>
             <Box css={styles.button_container}>
-                <ChangeButton style={styles.button}/>
+                <ChangeButton  style={styles.button}/>
                 <Box css={[styles.allow,styles.anim]}></Box>
             </Box>
         </Box>
