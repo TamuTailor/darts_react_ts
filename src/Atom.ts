@@ -1,4 +1,5 @@
-import { atom} from 'jotai'
+import {atom} from 'jotai'
+
 
 export const number = atom(0)
 export const magnification = atom(1)

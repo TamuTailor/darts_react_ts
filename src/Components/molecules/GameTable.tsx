@@ -19,7 +19,6 @@ export const GameTable = () => {
   const [gArray, setGArray] = useAtom(gameArray);
   const [score, setScore] = useAtom(gameScore);
   const Burst = useAtomValue(burst);
-  console.log(gArray);
 
   return (
     <Box css={styles.box}>
@@ -32,16 +31,6 @@ export const GameTable = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {/* <Tr>
-              {gArray.map((e, i) =>
-                 Burst ? (
-                // e.reduce((sum, elem) => sum + elem) === 0 && score < 0 ? (
-                  <Td key={i}>BURST</Td>
-                ) : (
-                  <Td key={i}>{e.reduce((sum, elem) => sum + elem)}</Td>
-                )
-              )}
-            </Tr> */}
             <Tr>
               {gArray.map((e, i) =>(
                   <Td key={i} css={styles.td}>{e}</Td>
