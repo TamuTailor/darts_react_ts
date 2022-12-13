@@ -45,6 +45,11 @@ export const useZerooneLogic = () => {
       tmp.push(point);
       ZerooneLogic(tmpscore);
 
+      if (tmpscore < 0) {
+        setBurst(true);
+        tmpG.push("BURST");
+      }
+
       if (t === 3) {
         change(tmpscore);
       }
@@ -62,10 +67,7 @@ export const useZerooneLogic = () => {
       setNum(0);
       tmpG.push(total);
       setBurst(false);
-    } else {
-      setBurst(true);
-      tmpG.push("BURST");
-    }
+    } 
   };
 
   return {t,score,rSum};

@@ -9,7 +9,7 @@ type Props = {
 
 export const ChangeButton = (props: Props) => {
   const { style } = props;
- const { Change} = useChangeAction()
+  const { Change} = useChangeAction()
 
   return <Button css={style} onClick={() => Change()}></Button>;
 };

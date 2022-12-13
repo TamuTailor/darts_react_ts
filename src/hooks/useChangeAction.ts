@@ -4,7 +4,6 @@ import {
   burst,
   gameArray,
   gameScore,
-  number,
   roundArray,
   roundSum,
   throwCount,
@@ -18,7 +17,6 @@ export const useChangeAction = () => {
   const [score, setScore] = useAtom(gameScore);
   const [Burst, setBurst] = useAtom(burst);
   let tmpG: Array<number | string> = gArray;
-  // const total = rArray.reduce((sum, elem) => sum + elem)
 
   const Change = () => {
     if (score < 0) {
