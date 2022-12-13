@@ -1,9 +1,5 @@
 import { Box } from "@chakra-ui/react";
 import { css } from "@emotion/react";
-import { useAtom, useAtomValue } from "jotai";
-import {  sepaOption } from "../../Atom";
-import { Fat } from "../templates/Bord/Fat";
-import { GameOption } from "../templates/GameOption";
 import React from "react";
 import { useZerooneLogic } from "../../hooks/useZeroOneLogic";
 import { Change } from "../molecules/Change";
