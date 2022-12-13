@@ -1,12 +1,16 @@
 import { Box, Button } from "@chakra-ui/react";
 import { css } from "@emotion/react";
+import { useSetAtom } from "jotai";
 import React, { useState } from "react";
+import { sepaOption } from "../../../Atom";
 import { useButtonColorChange } from "../../../hooks/useButtonColorChange";
 
 export const BullOption = () => {
   const { colorChange, styles, buttonColor } = useButtonColorChange();
-  
+  const setSepaoption = useSetAtom(sepaOption)
+
   const bullOption = (e: React.MouseEvent<HTMLButtonElement>) => {
+    setSepaoption(e.currentTarget.value)
     colorChange(e);
   };
   return (

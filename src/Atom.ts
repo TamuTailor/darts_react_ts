@@ -1,6 +1,6 @@
 import {atom} from 'jotai'
 
-
+export const optionSelected = atom(false)
 // ------01score-------------------
 
 export const number = atom(0)
@@ -19,4 +19,4 @@ export const burst = atom(false)
 // --------gameoption------------------
 export const game = atom<string | number>("")
 export const playerCount = atom(0)
-export const gameOption = atom("fat")
+export const sepaOption = atom("")

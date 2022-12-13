@@ -1,7 +1,7 @@
 import { Box } from "@chakra-ui/react";
 import { css } from "@emotion/react";
-import { useAtom, useSetAtom } from "jotai";
-import { magnification, number, throwCount } from "../../../Atom";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
+import { magnification, number, sepaOption, throwCount } from "../../../Atom";
 
 
 
@@ -9,6 +9,8 @@ export const OuterBull = () => {
  const setNum = useSetAtom(number);
     const setMagni = useSetAtom(magnification);
     const [thro, setthrow] = useAtom(throwCount);
+    const sepa = useAtomValue(sepaOption);
+
 
 
   const hitNumber = (count: number) => {
@@ -16,8 +18,13 @@ export const OuterBull = () => {
    
     if (thro < 3) {
       setNum(count);
-      setMagni(1);
-      setthrow(thro + 1);
+      setthrow(thro + 1); 
+      if(sepa === "sepa"){
+        setMagni(1);
+      } else{
+        setMagni(2)
+      }
+
     }
     
     };
