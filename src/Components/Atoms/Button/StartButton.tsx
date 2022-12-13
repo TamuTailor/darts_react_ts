@@ -1,7 +1,5 @@
 import { Button } from '@chakra-ui/react'
 import { useAtomValue, useSetAtom } from 'jotai'
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
 import { game, optionSelected, playerCount, sepaOption } from '../../../Atom'
 
 export const StartButton = () => {
@@ -15,8 +13,6 @@ export const StartButton = () => {
         if(selectedGame !=="" && players !==0 && bullOption !==""){
              setSelected(true)
         }
-       
-
     }
 
 

@@ -9,6 +9,7 @@ import { GameOption } from "../Components/templates/GameOption";
 
 export const Router = () => {
   const selected = useAtomValue(optionSelected)
+
   return (
     <BrowserRouter>
       <Routes>
