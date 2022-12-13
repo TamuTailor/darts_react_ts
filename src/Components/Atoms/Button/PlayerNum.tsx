@@ -1,15 +1,16 @@
 import { Box, Button } from "@chakra-ui/react";
 import { css } from "@emotion/react";
-import React, { useState } from "react";
+import React from "react";
+import { useButtonColorChange } from "../../../hooks/useButtonColorChange";
 
 export const PlayerNum = () => {
-  const [buttonColor, setButtonColor] = useState("");
+    const { colorChange, styles, buttonColor } = useButtonColorChange();
 
   const playerCount = (e: React.MouseEvent<HTMLButtonElement>) => {
-    setButtonColor(e.currentTarget.value);
+    colorChange(e);
   };
 
-  
+
   return (
     <Box>
       <Button
@@ -50,14 +51,4 @@ export const PlayerNum = () => {
       </Button>
     </Box>
   );
-};
-
-const styles = {
-  true: css`
-    background-color: red;
-  `,
-  false: css`
-    background-color: #ccccccc0;
-    border: 1px solid blue;
-  `,
 };
