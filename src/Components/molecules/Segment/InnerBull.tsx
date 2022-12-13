@@ -1,18 +1,24 @@
 import { Box } from "@chakra-ui/react";
 import { css } from "@emotion/react";
-import { useContext } from "react";
+import { useAtom, useSetAtom } from "jotai";
+import { magnification, number, throwCount } from "../../../Atom";
 
 
 
 
 export const InnerBull = () => {
 
+  const setNum = useSetAtom(number);
+  const setMagni = useSetAtom(magnification);
+  const [thro, setthrow] = useAtom(throwCount);
+
 
   const hitNumber = (count:number) => {
-  // setNumber(count)
-  // setMagnification(2)
-  // setthrowCount(throwCount+1)
-
+    if (thro < 3) {
+      setNum(count);
+      setMagni(2);
+      setthrow(thro + 1);
+    }
 }
   return <Box onClick={()=>hitNumber(25)} css={styles.inner} />;
 };

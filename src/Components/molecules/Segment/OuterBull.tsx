@@ -1,19 +1,24 @@
 import { Box } from "@chakra-ui/react";
 import { css } from "@emotion/react";
-import { useContext } from "react";
+import { useAtom, useSetAtom } from "jotai";
+import { magnification, number, throwCount } from "../../../Atom";
+
 
 
 export const OuterBull = () => {
+ const setNum = useSetAtom(number);
+    const setMagni = useSetAtom(magnification);
+    const [thro, setthrow] = useAtom(throwCount);
 
 
   const hitNumber = (count: number) => {
-  //   if(true){
-  //     setMagnification(1);
-  //   }else{
-  //     setMagnification(1);
-  //   }
-  //   setNumber(count);
-  //   setthrowCount(throwCount + 1);
+
+   
+    if (thro < 3) {
+      setNum(count);
+      setMagni(1);
+      setthrow(thro + 1);
+    }
     
     };
 

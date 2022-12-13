@@ -1,6 +1,5 @@
 import { Button } from "@chakra-ui/react";
 import { useAtom } from "jotai";
-import { Children } from "react";
 import { game, gameScore } from "../../../Atom";
 
 export const GameSelectButton = () => {

@@ -1,13 +1,12 @@
-import React from 'react'
-import { Linkbar } from '../molecules/Linkbar'
-import { CulCrike } from '../templates/Bord/CulCricke'
-
+import React from "react";
+import { Select} from "../molecules/Select";
+import { CulCrike } from "../templates/Bord/CulCricke";
 
 export const Cricket = () => {
   return (
     <div>
-        <Linkbar />
-        <CulCrike />
+      <Select />
+      <CulCrike />
     </div>
-  )
-}
+  );
+};
