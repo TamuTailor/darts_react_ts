@@ -1,7 +1,7 @@
 import { Button } from "@chakra-ui/react";
 import { useAtom } from "jotai";
-import { game, gameScore } from "../../../Atom";
-import { useButtonColorChange } from "../../../hooks/useButtonColorChange";
+import { game, gameScore } from "../../../../Atom";
+import { useButtonColorChange } from "../../../../hooks/useButtonColorChange";
 
 export const GameSelectButton = () => {
   const [selectedGame, setSelectedGame] = useAtom(game);

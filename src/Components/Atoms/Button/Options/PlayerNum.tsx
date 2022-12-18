@@ -2,8 +2,8 @@ import { Box, Button } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useSetAtom } from "jotai";
 import React from "react";
-import { playerCount } from "../../../Atom";
-import { useButtonColorChange } from "../../../hooks/useButtonColorChange";
+import { playerCount } from "../../../../Atom";
+import { useButtonColorChange } from "../../../../hooks/useButtonColorChange";
 
 export const PlayerNum = () => {
   const { colorChange, styles, buttonColor } = useButtonColorChange();
@@ -11,7 +11,7 @@ export const PlayerNum = () => {
 
   const playerCounter = (e: React.MouseEvent<HTMLButtonElement>) => {
     const p = Number(e.currentTarget.value);
-    setPlayers(p)
+    setPlayers(p);
     colorChange(e);
   };
 

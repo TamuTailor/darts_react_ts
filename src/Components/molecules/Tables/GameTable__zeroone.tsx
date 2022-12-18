@@ -11,11 +11,11 @@ import {
 } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useAtom, useAtomValue } from "jotai";
-import { burst, gameArray, gameScore, sepaOption } from "../../Atom";
-import { ThrowPoint } from "../Atoms/ThrowPoint";
-import { Score } from "./Score";
+import { burst, gameArray, gameScore, sepaOption } from "../../../Atom";
+import { ThrowPoint } from "../../Atoms/ThrowPoint";
+import { Score } from "../Score";
 
-export const GameTable = () => {
+export const GameTableZeroone = () => {
   const [gArray, setGArray] = useAtom(gameArray);
   const [score, setScore] = useAtom(gameScore);
   const Burst = useAtomValue(burst);
@@ -33,10 +33,11 @@ export const GameTable = () => {
           </Thead>
           <Tbody>
             <Tr>
-              {gArray.map((e, i) =>(
-                  <Td key={i} css={styles.td}>{e}</Td>
-                )
-              )}
+              {gArray.map((e, i) => (
+                <Td key={i} css={styles.td}>
+                  {e}
+                </Td>
+              ))}
             </Tr>
           </Tbody>
         </Table>
@@ -54,7 +55,7 @@ const styles = {
     width: 40%;
     height: 70%;
   `,
-  td:css`
+  td: css`
     display: block;
-  `
+  `,
 };

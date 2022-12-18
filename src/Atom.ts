@@ -16,6 +16,15 @@ export const gameArray= atom<number[]>([])
 export const gameScore = atom<number>(0)
 export const burst = atom(false)
 
+// ---------crickescore----------------
+export type Mark ={
+    num:number
+    ,mark:number
+
+} 
+export const criPoints= atom<Array<Mark>>([])
+export const marks= atom<Array<Array<Mark>>> ([])
+
 // --------gameoption------------------
 export const game = atom<string | number>("")
 export const playerCount = atom(0)
