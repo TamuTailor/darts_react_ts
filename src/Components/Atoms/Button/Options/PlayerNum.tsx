@@ -17,7 +17,7 @@ export const PlayerNum = () => {
     const pNArray = []
     for(let i = 1;i < p +1 ; i++){
       pNArray.push(  {player:`player${i}`,
-              twenty:2,
+              twenty:i,
               nineteen:2,
               eighteen:2,
               seventeen:3,

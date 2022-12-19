@@ -27,9 +27,8 @@ import { ThreeMark } from "../../Atoms/Marks/ThreeMark";
 import { TwoMark } from "../../Atoms/Marks/TwoMark";
 import { ThrowPoint } from "../../Atoms/ThrowPoint";
 import { Score } from "../Score";
-const criArray = [20, 19,
-    18, 17, 16, 15, 25
-  ];
+import { MarkCount } from "./MarkCount";
+const criArray = [20, 19, 18, 17, 16, 15, 25];
 
 export const GameTableCricket = () => {
   const [gArray, setGArray] = useAtom(gameArray);
@@ -44,11 +43,9 @@ export const GameTableCricket = () => {
   const [pNum, setPNum] = useAtom(playerCount);
   const ctArrayLength = ctArray.length;
 
-  useEffect(()=>{
-    console.log(ctArray)
-  },[])
-
-
+  useEffect(() => {
+    console.log(ctArray);
+  }, []);
 
   return (
     <Box css={styles.box}>
@@ -64,22 +61,11 @@ export const GameTableCricket = () => {
           <Tbody>
             {criArray.map((num, i) => (
               <Tr>
-                {ctArrayLength === 1 ? (
-                <>
-                 {num === 20 ? <Td>{ctArray[0].twenty === 1 ? <OneMark /> :ctArray[0].twenty === 2 ?<TwoMark />:ctArray[0].twenty >=3 ? <ThreeMark />:<></> }</Td>:<></>}
-                 {num === 19 ? <Td>{ctArray[0].nineteen}</Td>:<></>}
-                 {num === 18 ? <Td>{ctArray[0].eighteen}</Td>:<></>}
-                 {num === 17 ? <Td>{ctArray[0].seventeen}</Td>:<></>}
-                 {num === 16 ? <Td>{ctArray[0].sixteen}</Td>:<></>}
-                 {num === 15 ? <Td>{ctArray[0].fifteen}</Td>:<></>}
-                 {num === 25 ? <Td>{ctArray[0].bull}</Td>:<></>}
-                </>
-                  
-                 
-                ) : (
-                  <></>
-                )}
+                {ctArrayLength >= 1 ? <MarkCount n={num} p={1} /> : <></>}
+                {ctArrayLength >= 2 ? <MarkCount n={num} p={2}  /> : <></>}
                 <Td>{num}</Td>
+                {ctArrayLength >= 3 ? <MarkCount n={num} p={3}  /> : <></>}
+                {ctArrayLength >= 4 ? <MarkCount n={num} p={4}  /> : <></>}
               </Tr>
             ))}
           </Tbody>
