@@ -2,7 +2,7 @@ import { Box } from "@chakra-ui/react";
 import { SerializedStyles } from "@emotion/react";
 import { useAtom, useSetAtom } from "jotai";
 import React from "react";
-import { number, magnification, throwCount } from "../../../Atom";
+import { number, magnification, throwCount, Twenty } from "../../../Atom";
 
 type Props = {
   styles: SerializedStyles;
@@ -15,6 +15,7 @@ export const DefaultSegment = (props: Props) => {
   const setNum = useSetAtom(number);
   const setMagni = useSetAtom(magnification);
   const [thro, setthrow] = useAtom(throwCount);
+  const [twenty, setTwenty] = useAtom(Twenty);
 
   const counts = [
     20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5,
@@ -25,6 +26,9 @@ export const DefaultSegment = (props: Props) => {
       setNum(count);
       setMagni(m);
       setthrow(thro + 1);
+    }
+    if(count === 20){
+      setTwenty((prev)=>(prev+m))
     }
   };
 
