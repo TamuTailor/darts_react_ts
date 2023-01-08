@@ -13,6 +13,7 @@ import { useAtom, useAtomValue } from "jotai";
 import { useEffect, useRef } from "react";
 import {
   burst,
+  cricketDataArray,
   cricketTableArray,
   gameArray,
   gameScore,
@@ -21,11 +22,8 @@ import {
   sepaOption,
   Twenty,
 } from "../../../Atom";
-import { useCricketLogic } from "../../../hooks/useCricketLogic";
-import { OneMark } from "../../Atoms/Marks/OneMark";
-import { ThreeMark } from "../../Atoms/Marks/ThreeMark";
-import { TwoMark } from "../../Atoms/Marks/TwoMark";
 import { ThrowPoint } from "../../Atoms/ThrowPoint";
+import { CricketScore } from "../CricketScore";
 import { Score } from "../Score";
 import { MarkCount } from "./MarkCount";
 const criArray = [20, 19, 18, 17, 16, 15, 25];
@@ -38,14 +36,16 @@ export const GameTableCricket = () => {
   const [mark, setMark] = useAtom(marks);
 
   const [twenty, setTwenty] = useAtom(Twenty);
-
-  const [ctArray, setCTArray] = useAtom(cricketTableArray);
   const [pNum, setPNum] = useAtom(playerCount);
+  const [ctArray, setCtArray] = useAtom(cricketTableArray);
   const ctArrayLength = ctArray.length;
+let sum = 0
+  // useEffect(() => {
+  //   console.log(cdArray);
+  
+  // }, []);
 
-  useEffect(() => {
-    console.log(ctArray);
-  }, []);
+  
 
   return (
     <Box css={styles.box}>
@@ -60,7 +60,7 @@ export const GameTableCricket = () => {
           </Thead>
           <Tbody>
             {criArray.map((num, i) => (
-              <Tr>
+              <Tr key={i}>
                 {ctArrayLength >= 1 ? <MarkCount n={num} p={1} /> : <></>}
                 {ctArrayLength >= 2 ? <MarkCount n={num} p={2}  /> : <></>}
                 <Td>{num}</Td>
@@ -71,7 +71,10 @@ export const GameTableCricket = () => {
           </Tbody>
         </Table>
       </TableContainer>
-      <Score />
+      <CricketScore />
+      <p>as{
+      sum
+} lll</p>
       <p>{sepa}</p>
     </Box>
   );

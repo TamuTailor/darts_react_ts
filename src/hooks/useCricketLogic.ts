@@ -1,4 +1,4 @@
-import { criPoints, Mark, marks } from './../Atom';
+import { cricketDataArray, cricketTableArray, criPoints, Mark, marks, nowThrowPlayer, playerCount } from "./../Atom";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { after } from "lodash";
 import React, { useEffect, useRef } from "react";
@@ -8,10 +8,8 @@ import {
   throwCount,
   roundSum,
   round,
-  roundArray,
   gameScore,
   gameArray,
-  burst,
 } from "../Atom";
 
 export const useCricketLogic = () => {
@@ -19,57 +17,66 @@ export const useCricketLogic = () => {
   const m = useAtomValue(magnification);
   const t = useAtomValue(throwCount);
   const r = useAtomValue(round);
-  // const [rSum, setRSum] = useAtom(roundSum);
-  // const [rArray, setRArray] = useAtom(roundArray);
   const isFirstRender = useRef(false);
-  // const [score, setScore] = useAtom(gameScore);
-  // const setNum = useSetAtom(number);
-  // const setthrow = useSetAtom(throwCount);
-  // const [gArray, setGArray] = useAtom(gameArray);
-  // const [Burst, setBurst] = useAtom(burst);
+
   const [criPoint, setCriPoint] = useAtom(criPoints);
   const [mark, setMark] = useAtom(marks);
+  const [cdArray, setCdArray] = useAtom(cricketDataArray);
+  const [ctArray, setCtArray] = useAtom(cricketTableArray);
+  const [pCount,setPCount] = useAtom(playerCount);
+  const [ntPlayer, setNtPlayer] = useAtom(nowThrowPlayer);
 
-  // let tmpG: Array<number | string> = gArray;
-  // let tmp: number[] = rArray;
-  // let point: number = n * m;
-  // let sum: number = 0;
-let i:Array<Mark> = []
-
+  let i: Array<Mark> = [];
 
   useEffect(() => {
     isFirstRender.current = true;
   }, []);
 
   useEffect(() => {
-    // const tmpscore = score - point;
     if (isFirstRender.current || t < 1) {
       isFirstRender.current = false;
     } else {
-      // sum = rSum + point;
-      // setRSum(sum);
-      // tmp.push(point);
-     
-    i[0] = criPoint[0]
-    i[1] = criPoint[1]
-    i.push({num:n,mark:m})
-     
-    //  console.log(i)
+      let roundArray = criPoint;
+      let ctArrayTmp = ctArray
+      // i[0] = criPoint[0];
+      // i[1] = criPoint[1];
+      // i.push({ num: n, mark: m });
+      roundArray.push({ num: n, mark: m });
+      // setCriPoint((prev) => [...prev, { num: n, mark: m }]);
+      
+      if(n === 20){
+        ctArrayTmp[ntPlayer-1].twenty += m
+      } 
+      if(n === 19){
+        ctArrayTmp[ntPlayer-1].nineteen += m
+      } 
+      if(n === 18){
+        ctArrayTmp[ntPlayer-1].eighteen += m
+      } 
+      if(n === 17){
+        ctArrayTmp[ntPlayer-1].seventeen += m
+      } 
+      if(n === 16){
+        ctArrayTmp[ntPlayer-1].sixteen += m
+      } 
+      if(n === 15){
+        ctArrayTmp[ntPlayer-1].fifteen += m
+      } 
+      if(n === 25){
+        ctArrayTmp[ntPlayer-1].bull += m
+      } 
 
-      setCriPoint((prev) => [...prev, { num: n, mark: m }]);  
+console.log(ctArray)
+      if (t === 3) {
+        let cdArrayTmp = cdArray;
 
-        
+        // setMark((prev) => [...prev, i]);
+        cdArrayTmp[0].push(roundArray);
+        // cdArrayTmp.push(roundArray)
 
-      if(t === 3){
-       setMark((prev)=>(
-        [...prev,i]
-       ))
-       setCriPoint([]) 
-        console.log(mark)
-
+        //  setCdArray(cdArrayTmp)
+        setCriPoint([]);
       }
-
-
       // if (tmpscore < 0) {
       //   setBurst(true);
       //   tmpG.push("BURST");
@@ -77,9 +84,10 @@ let i:Array<Mark> = []
     }
   }, [t]);
 
-  return { t, 
+  return {
+    t,
     // score, rSum
-   };
+  };
 };
 
 // ほしい変数

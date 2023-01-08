@@ -6,7 +6,12 @@ import { OneMark } from "../../Atoms/Marks/OneMark";
 import { ThreeMark } from "../../Atoms/Marks/ThreeMark";
 import { TwoMark } from "../../Atoms/Marks/TwoMark";
 
-export const MarkCount = (props: any) => {
+type Props = {
+    n:number,
+    p:number
+}
+
+export const MarkCount = (props:Props) => {
   const { n ,p} = props;
   const [ctArray, setCTArray] = useAtom(cricketTableArray);
   return (
