@@ -36,7 +36,7 @@ export const useChangeAction = () => {
     setthrow(0);
     setRArray([]);
     setRSum(0);
-console.log(ntPlayer)
+
   };
 
 

@@ -28,7 +28,10 @@ import { Score } from "../Score";
 import { MarkCount } from "./MarkCount";
 const criArray = [20, 19, 18, 17, 16, 15, 25];
 
-export const GameTableCricket = () => {
+
+
+export const GameTableCricket = (props) => {
+  const {ctArray} = props
   const [gArray, setGArray] = useAtom(gameArray);
   const [score, setScore] = useAtom(gameScore);
   const Burst = useAtomValue(burst);
@@ -37,7 +40,7 @@ export const GameTableCricket = () => {
 
   const [twenty, setTwenty] = useAtom(Twenty);
   const [pNum, setPNum] = useAtom(playerCount);
-  const [ctArray, setCtArray] = useAtom(cricketTableArray);
+  // const [ctArray, setCtArray] = useAtom(cricketTableArray);
   const ctArrayLength = ctArray.length;
 let sum = 0
   // useEffect(() => {
@@ -61,9 +64,10 @@ let sum = 0
           <Tbody>
             {criArray.map((num, i) => (
               <Tr key={i}>
-                {ctArrayLength >= 1 ? <MarkCount n={num} p={1} /> : <></>}
-                {ctArrayLength >= 2 ? <MarkCount n={num} p={2}  /> : <></>}
+                {ctArrayLength >= 1 ? <MarkCount ctArray={ctArray} n={num} p={1} /> : <></>}
+                {ctArrayLength > 2 ? <MarkCount n={num} p={2}  /> : <></>}
                 <Td>{num}</Td>
+                {ctArrayLength === 2 ? <MarkCount n={num} p={2}  /> : <></>}
                 {ctArrayLength >= 3 ? <MarkCount n={num} p={3}  /> : <></>}
                 {ctArrayLength >= 4 ? <MarkCount n={num} p={4}  /> : <></>}
               </Tr>

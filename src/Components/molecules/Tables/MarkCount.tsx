@@ -1,12 +1,13 @@
 import { Td } from "@chakra-ui/react";
-import { useAtom } from "jotai";
-import React from "react";
-import { cricketTableArray } from "../../../Atom";
+import { useAtom, useAtomValue } from "jotai";
+import React, { useEffect, useRef } from "react";
+import { close20, cricketTableArray, increment, nowThrowPlayer, playerCount, throwCount } from "../../../Atom";
 import { OneMark } from "../../Atoms/Marks/OneMark";
 import { ThreeMark } from "../../Atoms/Marks/ThreeMark";
 import { TwoMark } from "../../Atoms/Marks/TwoMark";
 
 type Props = {
+    s?:any,
     n:number,
     p:number
 }
@@ -14,6 +15,43 @@ type Props = {
 export const MarkCount = (props:Props) => {
   const { n ,p} = props;
   const [ctArray, setCTArray] = useAtom(cricketTableArray);
+  const [c20,setC20] = useAtom(close20);
+  const [ntPlayer, setNtPlayer] = useAtom(nowThrowPlayer);
+  const [pCount, setPCount] = useAtom(playerCount);
+  const t = useAtomValue(throwCount);
+  const [inc, setInc] = useAtom(increment)
+  const isFirstClose = useRef(false);
+ 
+ let ctArrayTmp = []
+ ctArrayTmp=ctArray
+
+
+  
+// useEffect(()=>{
+//  ctArray.map((e) => {
+//     e.twenty >= 3 ? (twentyOpen += 1) : twentyOpen;
+//   });
+//   // },[inc])
+//     if (twentyOpen >= pCount && !isFirstClose.current) { 
+//       const cp = ntPlayer
+//         setC20(cp);
+//         isFirstClose.current = true  
+//     }  
+
+
+
+// useEffect(()=>{ 
+//    if(isFirstClose.current){
+//     ctArrayTmp[c20 -1].twenty = 3
+   
+//     console.log(c20)
+//   } 
+// },[c20,isFirstClose])
+
+
+  // if(c20 > 0){
+  //   ctArrayTmp[c20 -1].twenty = 3
+  // }
   return (
     <>
       {n === 20 ? (
@@ -23,15 +61,16 @@ export const MarkCount = (props:Props) => {
           ) : ctArray[p-1].twenty === 2 ? (
             <TwoMark />
           ) : ctArray[p-1].twenty >= 3 ? (
-            <ThreeMark />
+            isFirstClose.current ? <p>close<ThreeMark />
+              </p>:<ThreeMark />
           ) : (
-            <></>
+            <>{ctArrayTmp[p-1].twenty}</>
           )}
         </Td>
       ) : (
         <></>
       )}
-      {n === 19 ? (
+      {/* {n === 19 ? (
         <Td>
           {ctArray[p-1].nineteen === 1 ? (
             <OneMark />
@@ -120,7 +159,7 @@ export const MarkCount = (props:Props) => {
         </Td>
       ) : (
         <></>
-      )}
+      )} */}
     </>
   );
 };

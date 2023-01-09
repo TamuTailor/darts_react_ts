@@ -40,9 +40,16 @@ type ctAry = {
 export type roundDataType = Mark[]
 export type playerData = Array<roundDataType>
 
-
 export const cricketTableArray = atom<Array<ctAry>>([]);
 export const cricketDataArray = atom<Array<playerData>>([]);
+
+export const close20 = atom(0)
+export const close19 = atom(false)
+export const close18 = atom(false)
+export const close17 = atom(false)
+export const close16 = atom(false)
+export const close15 = atom(false)
+export const closebull = atom(false)
 
 // --------gameoption------------------
 export const game = atom<string | number>("");
@@ -50,3 +57,6 @@ export const playerCount = atom(0);
 export const sepaOption = atom("");
 
 export const nowThrowPlayer = atom(1)
+
+
+export const increment = atom(0)

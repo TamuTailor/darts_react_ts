@@ -1,6 +1,5 @@
-import { cricketDataArray, cricketTableArray, criPoints, Mark, marks, nowThrowPlayer, playerCount } from "./../Atom";
+import { close20, cricketDataArray, cricketTableArray, criPoints, Mark, marks, nowThrowPlayer, playerCount } from "./../Atom";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
-import { after } from "lodash";
 import React, { useEffect, useRef } from "react";
 import {
   number,
@@ -25,6 +24,7 @@ export const useCricketLogic = () => {
   const [ctArray, setCtArray] = useAtom(cricketTableArray);
   const [pCount,setPCount] = useAtom(playerCount);
   const [ntPlayer, setNtPlayer] = useAtom(nowThrowPlayer);
+  const [c20, setC20] = useAtom(close20);
 
   let i: Array<Mark> = [];
 
@@ -37,36 +37,38 @@ export const useCricketLogic = () => {
       isFirstRender.current = false;
     } else {
       let roundArray = criPoint;
-      let ctArrayTmp = ctArray
+      let ctArrayTmp = [...ctArray] 
+      console.log(ctArrayTmp)
       // i[0] = criPoint[0];
       // i[1] = criPoint[1];
       // i.push({ num: n, mark: m });
       roundArray.push({ num: n, mark: m });
       // setCriPoint((prev) => [...prev, { num: n, mark: m }]);
-      
+
       if(n === 20){
         ctArrayTmp[ntPlayer-1].twenty += m
+        setCtArray(ctArrayTmp)
+
       } 
-      if(n === 19){
+      else if(n === 19){
         ctArrayTmp[ntPlayer-1].nineteen += m
       } 
-      if(n === 18){
+      else if(n === 18){
         ctArrayTmp[ntPlayer-1].eighteen += m
       } 
-      if(n === 17){
+      else if(n === 17){
         ctArrayTmp[ntPlayer-1].seventeen += m
       } 
-      if(n === 16){
+      else if(n === 16){
         ctArrayTmp[ntPlayer-1].sixteen += m
       } 
-      if(n === 15){
+      else if(n === 15){
         ctArrayTmp[ntPlayer-1].fifteen += m
       } 
-      if(n === 25){
+     else if(n === 25){
         ctArrayTmp[ntPlayer-1].bull += m
       } 
 
-console.log(ctArray)
       if (t === 3) {
         let cdArrayTmp = cdArray;
 
@@ -82,17 +84,11 @@ console.log(ctArray)
       //   tmpG.push("BURST");
       // }
     }
+
   }, [t]);
 
+ 
   return {
-    t,
-    // score, rSum
+    t,ctArray   
   };
 };
-
-// ほしい変数
-// ・マーク数
-// ・合計点数
-// ・ラウンドのマーク数配列
-
-// after

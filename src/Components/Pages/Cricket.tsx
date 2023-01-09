@@ -11,14 +11,14 @@ import { cricketTableArray, playerCount } from "../../Atom";
 import { useAtom, useAtomValue } from "jotai";
 
 export const Cricket = () => {
-  const { t, } = useCricketLogic();
+  const { t,ctArray } = useCricketLogic();
 
 
   return (
     <Box>
       <Box>
         <SegmentCircle />
-        <GameTableCricket />
+        <GameTableCricket ctArray={ctArray} />
       </Box>
        {/* {score === 0 && rSum !==0 ? <Clear />:t >= 3 ||score < 0 ? <Change /> : <></> } */}
        {t >= 3 ? <Change /> : <></> }
