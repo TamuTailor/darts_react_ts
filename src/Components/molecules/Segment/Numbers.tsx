@@ -32,7 +32,7 @@ const styles = {
     left: calc(50%);
     display: inline-block;
     width: 60px;
-    height: 36vw;
+    height: 37.8vw;
     transform-origin: center bottom;
     text-align: center;
     color: azure;
@@ -41,7 +41,7 @@ const styles = {
     @media screen and (min-width: calc(750px/0.7)) {
       font-size: 6vh;
       width: 80px;
-      height: 45vh;
+      height: 39vh;
     }
   `,
 };

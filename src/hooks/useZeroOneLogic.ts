@@ -1,3 +1,4 @@
+import { cricketTableArray, nowThrowPlayer, zerooneTableArray } from './../Atom';
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import React, { useEffect, useRef } from "react";
 import {
@@ -25,12 +26,14 @@ export const useZerooneLogic = () => {
   const setthrow = useSetAtom(throwCount);
   const [gArray, setGArray] = useAtom(gameArray);
   const [Burst, setBurst] = useAtom(burst);
+  const [ztArray, setZtArray] = useAtom(zerooneTableArray);
+  const [ntPlayer, setNtPlayer] = useAtom(nowThrowPlayer);
 
   let tmpG: Array<number | string> = gArray;
   let tmp: number[] = rArray;
   let point: number = n * m;
   let sum: number = 0;
-
+  let ztArrayTmp = [...ztArray] 
   useEffect(() => {
     isFirstRender.current = true;
   }, []);
@@ -40,19 +43,29 @@ export const useZerooneLogic = () => {
     if (isFirstRender.current || t < 1) {
       isFirstRender.current = false;
     } else {
-      sum = rSum + point;
+    
+      ztArrayTmp[ntPlayer-1].sum -= point
+
+
+      if(n === 0 && m===0){
+        sum = rSum + point +1;
+      }else{
+        sum = rSum + point ;
+      }
+      //Outで出力のために+1？
       setRSum(sum);
       tmp.push(point);
-      ZerooneLogic(tmpscore);
 
-      if (tmpscore < 0) {
+      if (ztArrayTmp[ntPlayer-1].sum < 0) {
         setBurst(true);
+        ztArrayTmp[ntPlayer-1].ary.push("BURST")
         tmpG.push("BURST");
       }
 
       if (t === 3) {
-        change(tmpscore);
+        change(ztArrayTmp[ntPlayer-1].sum);
       }
+      
     }
   }, [t]);
 
@@ -65,6 +78,7 @@ export const useZerooneLogic = () => {
     const total = rArray.reduce((sum, elem) => sum + elem);
     if (p >= 0) {
       setNum(0);
+      ztArrayTmp[ntPlayer-1].ary.push(total)
       tmpG.push(total);
       setBurst(false);
     } 
@@ -72,3 +86,8 @@ export const useZerooneLogic = () => {
 
   return {t,score,rSum};
 };
+
+
+
+
+

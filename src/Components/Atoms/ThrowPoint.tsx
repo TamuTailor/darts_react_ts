@@ -1,12 +1,13 @@
 import { Box } from '@chakra-ui/react';
 import { css } from '@emotion/react';
 import { useAtom, useAtomValue } from 'jotai';
-import React from 'react'
 import { roundArray, throwCount } from '../../Atom';
 
 export const ThrowPoint = () => {
     const [rArray,setRArray] = useAtom(roundArray);
     const t = useAtomValue(throwCount);
+   
+
   return (
     
     <Box css = {styles.container}>
@@ -25,10 +26,13 @@ const styles = {
     font-size: 24px;
     height:60px;
     align-items: center;
+    width: 100%;
   `
   ,
   number:css`
     width: 33%;
-    background-color: red;
+    background-color:black;
+    font-weight: 700;
+    font-size: 32px;
   `
 }

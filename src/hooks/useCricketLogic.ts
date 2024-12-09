@@ -1,4 +1,4 @@
-import { close20, cricketDataArray, cricketTableArray, criPoints, Mark, marks, nowThrowPlayer, playerCount } from "./../Atom";
+import { close20, cricketDataArray, cricketTableArray, criPoints, Mark, marks, nowThrowPlayer, playerCount, roundArray } from "./../Atom";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import React, { useEffect, useRef } from "react";
 import {
@@ -10,6 +10,7 @@ import {
   gameScore,
   gameArray,
 } from "../Atom";
+import { useClose } from "./useClose";
 
 export const useCricketLogic = () => {
   const n = useAtomValue(number);
@@ -17,6 +18,7 @@ export const useCricketLogic = () => {
   const t = useAtomValue(throwCount);
   const r = useAtomValue(round);
   const isFirstRender = useRef(false);
+  const {isFirstClose20,isFirstClose19,isFirstClose18,isFirstClose17,isFirstClose16,isFirstClose15,isFirstClosebull} = useClose()
 
   const [criPoint, setCriPoint] = useAtom(criPoints);
   const [mark, setMark] = useAtom(marks);
@@ -24,9 +26,11 @@ export const useCricketLogic = () => {
   const [ctArray, setCtArray] = useAtom(cricketTableArray);
   const [pCount,setPCount] = useAtom(playerCount);
   const [ntPlayer, setNtPlayer] = useAtom(nowThrowPlayer);
-  const [c20, setC20] = useAtom(close20);
+  const [rArray, setRArray] = useAtom(roundArray);
 
-  let i: Array<Mark> = [];
+  
+  let point: number = n * m;
+
 
   useEffect(() => {
     isFirstRender.current = true;
@@ -36,59 +40,61 @@ export const useCricketLogic = () => {
     if (isFirstRender.current || t < 1) {
       isFirstRender.current = false;
     } else {
-      let roundArray = criPoint;
+      
       let ctArrayTmp = [...ctArray] 
-      console.log(ctArrayTmp)
-      // i[0] = criPoint[0];
-      // i[1] = criPoint[1];
-      // i.push({ num: n, mark: m });
-      roundArray.push({ num: n, mark: m });
-      // setCriPoint((prev) => [...prev, { num: n, mark: m }]);
+      let tmp =  [...rArray]
+    if(n === 20||n===19||n===18||n===17||n===16||n===15||n===25) {
+       tmp.push(m);
+    }else{
+      tmp.push(0);
+    }
+      setRArray(tmp);
 
-      if(n === 20){
+
+     
+
+      if(n === 20 && !isFirstClose20.current){
         ctArrayTmp[ntPlayer-1].twenty += m
         setCtArray(ctArrayTmp)
-
       } 
-      else if(n === 19){
+      else if(n === 19 && !isFirstClose19.current){
         ctArrayTmp[ntPlayer-1].nineteen += m
+        setCtArray(ctArrayTmp)
       } 
-      else if(n === 18){
+      else if(n === 18 && !isFirstClose18.current){
         ctArrayTmp[ntPlayer-1].eighteen += m
+        setCtArray(ctArrayTmp)
       } 
-      else if(n === 17){
+      else if(n === 17 && !isFirstClose17.current){
         ctArrayTmp[ntPlayer-1].seventeen += m
+        setCtArray(ctArrayTmp)
       } 
-      else if(n === 16){
+      else if(n === 16 && !isFirstClose16.current){
         ctArrayTmp[ntPlayer-1].sixteen += m
+        setCtArray(ctArrayTmp)
       } 
-      else if(n === 15){
+      else if(n === 15 && !isFirstClose15.current){
         ctArrayTmp[ntPlayer-1].fifteen += m
+        setCtArray(ctArrayTmp)
       } 
-     else if(n === 25){
+     else if(n === 25 && !isFirstClosebull.current){
         ctArrayTmp[ntPlayer-1].bull += m
+        setCtArray(ctArrayTmp)
       } 
 
-      if (t === 3) {
-        let cdArrayTmp = cdArray;
-
-        // setMark((prev) => [...prev, i]);
-        cdArrayTmp[0].push(roundArray);
-        // cdArrayTmp.push(roundArray)
-
-        //  setCdArray(cdArrayTmp)
-        setCriPoint([]);
-      }
-      // if (tmpscore < 0) {
-      //   setBurst(true);
-      //   tmpG.push("BURST");
+      // if (t === 3) {
+      //   // let cdArrayTmp = cdArray;
+      //   // cdArrayTmp[0].push(roundArray);
+      //   // setCriPoint([]);
       // }
+       
     }
-
+ 
   }, [t]);
+
 
  
   return {
-    t,ctArray   
+    t,ctArray  
   };
 };

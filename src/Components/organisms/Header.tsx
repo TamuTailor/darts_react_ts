@@ -1,10 +1,20 @@
-import { Box, Text } from '@chakra-ui/react'
-import React from 'react'
+import { Box, Heading, Text } from "@chakra-ui/react";
+import { css } from "@emotion/react";
+import React, { ReactNode } from "react";
+type Props = {
+  children: ReactNode;
+};
 
-export const Header = () => {
-  return (
-    <Box>
-        <Text>計算ツール</Text>
-    </Box>
-  )
-}
+export const Header = (props: Props) => {
+  const { children } = props;
+  return <Box css={styles.box}>{children}</Box>;
+};
+
+const styles = {
+  box: css`
+    margin-top: -10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    background-color: #770303;
+  `,
+};

@@ -1,26 +1,48 @@
 import { Box } from '@chakra-ui/react'
-import { css } from '@emotion/react'
+import { css, SerializedStyles } from '@emotion/react'
 import React from 'react'
 import { MarkContainer } from './MarkContainer'
 
-export const OneMark = () => {
+type Props = {
+  size?:string
+}
+
+export const OneMark = (props:Props) => {
+  const {size} = props
+
   return (
-    <MarkContainer>
-       <Box css={styels.one} ></Box>
+    <MarkContainer size={size}>
+       <Box css={size === "min"?styles.onemin :styles.one} ></Box>
     </MarkContainer>
   )
 }
 
-const styels = {
+const styles = {
     one:css`
     position: absolute;
-        width: 140%;
-        height: 2px;
-        top: 0;
-        right: 0px;
+        width: 110%;
+        height: 10px;
+        top: 5%;
+        right: 5%;
         background-color: white;
         transform: rotate(-45deg);
         transform-origin: 98% 100%;
+        @media screen and (max-width: 600px) {
+          height: 6px;
+    }
+    `,
+    onemin:css`
+    position: absolute;
+        width: 110%;
+        height: 6px;
+        top: 5%;
+        right: 5%;
+        background-color: white;
+        transform: rotate(-45deg);
+        transform-origin: 98% 100%;
+        @media screen and (max-width: 600px) {
+          height: 6px;
+    }
     `,
 
 }
