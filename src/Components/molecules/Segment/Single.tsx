@@ -32,7 +32,7 @@ const styles = {
     width: 0;
     border-bottom: 0 solid transparent;
     border-left: 2.7vw solid transparent;
-    border-top: 17vw solid white;
+    border-top: 17vw solid #e0e0e0;
     transform-origin: bottom ;
     z-index: 5;
 
@@ -41,11 +41,11 @@ const styles = {
     }
 
     @media screen and (min-width: calc(750px/0.7)) {
-      border-right: 3vh solid transparent;
-      border-left: 3vh solid transparent;
-      border-top: 18.5vh solid white;
+      border-right: 2.3vh solid transparent;
+      border-left: 2.3vh solid transparent;
+      border-top: 14.5vh solid #e0e0e0;
       &:nth-of-type(2n + 1) {
-        border-top: 18.5vh solid black;
+        border-top: 14.5vh solid black;
       }
     }
   `,
@@ -55,7 +55,7 @@ const styles = {
     position: absolute;
     height: 0;
     width: 0;
-    border-top: white 27.3vw solid;
+    border-top: #e0e0e0 27.3vw solid;
     border-right: 4.3vw solid transparent;
     border-bottom: 0px solid transparent;
     border-left: 4.3vw solid transparent;
@@ -66,11 +66,11 @@ const styles = {
       border-top: 27.3vw solid black;
     }
     @media screen and (min-width: calc(750px/0.7)) {
-      border-right: 4.8vh solid transparent;
-      border-left: 4.8vh solid transparent;
-      border-top: 30.5vh solid white;
+      border-right: 4.2vh solid transparent;
+      border-left: 4.2vh solid transparent;
+      border-top: 26.5vh solid #e0e0e0;
       &:nth-of-type(2n + 1) {
-        border-top: 30.5vh solid black;
+        border-top: 26.5vh solid black;
       }
     }
   `,

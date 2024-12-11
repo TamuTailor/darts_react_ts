@@ -1,11 +1,11 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import { magnification, number, sepaOption, throwCount } from "../../../Atom";
 
 
 
-export const OuterBull = () => {
+export const OutBord = () => {
  const setNum = useSetAtom(number);
     const setMagni = useSetAtom(magnification);
     const [thro, setthrow] = useAtom(throwCount);
@@ -14,34 +14,23 @@ export const OuterBull = () => {
 
 
   const hitNumber = (count: number) => {
-
-   
     if (thro < 3) {
       setNum(count);
       setthrow(thro + 1); 
-      if(sepa === "sepa"){
-        setMagni(1);
-      } else{
-        setMagni(2)
-      }
-
+      setMagni(0);
     }
     
     };
 
-  return <Box onClick={() => hitNumber(25)} css={styles.outer} />;
+  return <Button onClick={() => hitNumber(0)} css={styles.out}>OUT</Button>;
 };
 
 const styles = {
-  outer: css`
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    height: 12.5%;
-    width: 12.5%;
-    transform: translate(-50%, -50%);
-    border-radius: 100%;
-    background: #d81c1c;
-    z-index: 6;
+  out: css`
+  width:120px;
+  font-size: 24px;
+  font-weight: 700;
+  height: 50px;
+
   `,
 };

@@ -19,23 +19,23 @@ const styles = {
     position: absolute;
     height: 0;
     width: 0;
-    border-top: blue 19.5vw solid;
-    border-right: 3.1vw solid transparent;
+    border-top:#1924b9 21vw solid;
+    border-right: 3.4vw solid transparent;
     border-bottom: 0px solid transparent;
-    border-left: 3.1vw solid transparent;
+    border-left: 3.4vw solid transparent;
     transform-origin: bottom;
     z-index: 4 ;
     &:nth-of-type(2n + 1) {
-      border-top: red 19.5vw solid;
+      border-top: #d81c1c 21vw solid;
     }
 
     @media screen and (min-width: calc(750px/0.7)) {
-      border-top: blue 22.5vh solid;
-      border-right: 3.7vh solid transparent;
+      border-top: #1924b9 18vh solid;
+      border-right: 3vh solid transparent;
       border-bottom: 0px solid transparent;
-      border-left: 3.7vh solid transparent;
+      border-left: 3vh solid transparent;
       &:nth-of-type(2n + 1) {
-        border-top: red 22.5vh solid;
+        border-top: #d81c1c 18vh solid;
       }
     }
   `,

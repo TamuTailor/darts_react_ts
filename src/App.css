@@ -2,6 +2,10 @@
   margin: 0 auto;
   padding: 0;
   text-align: center;
+  background-color:rgb(29, 29, 29);
+  min-height: 100vh;
+  padding-top: 10px;
+  padding-bottom: 80px;
 }
 
 

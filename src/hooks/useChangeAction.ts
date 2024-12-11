@@ -1,4 +1,5 @@
-import { nowThrowPlayer, playerCount } from './../Atom';
+import { useLocation } from 'react-router-dom';
+import { nowThrowPlayer, playerCount, zerooneTableArray } from './../Atom';
 
 import { useAtom, useSetAtom } from "jotai";
 import {
@@ -20,7 +21,8 @@ export const useChangeAction = () => {
   const [ntPlayer, setNtPlayer] = useAtom(nowThrowPlayer);
   let tmpG: Array<number | string> = gArray;
   const [pCount,setPCount] = useAtom(playerCount);
-
+  const [ztArray, setZtArray] = useAtom(zerooneTableArray);
+  const path = useLocation()
 
   const Change = () => {
     if(ntPlayer < pCount){
@@ -29,10 +31,17 @@ export const useChangeAction = () => {
       setNtPlayer(1)
     }
 
-
-    if (score < 0) {
-      setScore(score + rsum);
+    if(path.pathname === "/zeroone"){
+      if (ztArray[ntPlayer-1].sum < 0) {
+      let ztArrayTmp = [...ztArray] 
+      ztArrayTmp[ntPlayer-1].sum += rsum
+      // setScore(score + rsum);
     }
+    }else{
+      
+    }
+
+    
     setthrow(0);
     setRArray([]);
     setRSum(0);

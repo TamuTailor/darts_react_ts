@@ -2,16 +2,19 @@ import { Box, Button } from "@chakra-ui/react";
 import { css } from "@emotion/react";
 import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import React, { useEffect, useRef } from "react";
-import { cricketDataArray, cricketTableArray, playerCount } from "../../../../Atom";
+import { useLocation } from "react-router-dom";
+import { cricketDataArray, cricketTableArray, gameScore, playerCount, zerooneTableArray } from "../../../../Atom";
 import { useButtonColorChange } from "../../../../hooks/useButtonColorChange";
 
 export const PlayerNum = () => {
   const { colorChange, styles, buttonColor } = useButtonColorChange();
   const setPlayers = useSetAtom(playerCount);  
   const [ctArray,setCTArray] = useAtom(cricketTableArray) 
-
   const [cdArray, setCdArray] = useAtom(cricketDataArray);
-  const cdArrayTmp = []
+  const [score, setScore] = useAtom(gameScore);
+  const [ztArray, setZtArray] = useAtom(zerooneTableArray);
+  const cdArrayTmp:any = []
+  const path = useLocation()
 
 
   const playerCounter = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -19,8 +22,21 @@ export const PlayerNum = () => {
     setPlayers(p);
     colorChange(e);
     const pNArray = []
-    for(let i = 1;i < p +1 ; i++){
-      pNArray.push(  {player:`player${i}`,
+  
+    
+    
+      if(path.pathname === "/zeroone"){
+        for(let i = 1;i < p +1 ; i++){
+          pNArray.push({
+            player:`player${i}`,
+            sum:0,
+            ary:[]
+          })
+        }
+        setZtArray(pNArray)
+      }else {
+        for(let i = 1;i < p +1 ; i++){
+        pNArray.push(  {player:`player${i}`,
               twenty:0,
               nineteen:0,
               eighteen:0,
@@ -29,17 +45,23 @@ export const PlayerNum = () => {
               fifteen:0,
               bull:0,
               sum:0
-            }
-)     
+            })  
+
+      }
+      setCTArray(pNArray)
   }
   for(let i = 0; i < p  ;i++)
     {
       cdArrayTmp.push([])
        setCdArray(cdArrayTmp)
     }
+
+    console.log(pNArray)
    
-  setCTArray(pNArray)
-  };
+  
+  
+  }; 
+
 
   const pNum = useAtomValue(playerCount)
 

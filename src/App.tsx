@@ -5,7 +5,7 @@ import { Provider } from 'jotai'
 
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider >
       <Provider>
         <Router />
       </Provider>

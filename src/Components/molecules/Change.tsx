@@ -26,7 +26,7 @@ const styles = {
         position: fixed;
         top: 0;
         left: 0;
-        z-index: 99;
+        z-index: 109;
     `,
     box_inner:css`
         height: 180px;
@@ -64,6 +64,12 @@ const styles = {
     text:css`
         font-size: 100px;
         color: white;
+        @media screen and (max-width: 1000px) {
+          font-size: 70px;
+    }
+        @media screen and (max-width: 600px) {
+          font-size: 40px;
+    }
     `,
     allow:css`
         position: absolute;
